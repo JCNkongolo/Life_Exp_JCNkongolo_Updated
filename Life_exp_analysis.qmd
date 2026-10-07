@@ -1,0 +1,39 @@
+---
+title: "Examine Life Expectancy"
+format: html
+date: today
+editor: visual
+---
+
+```{r}
+library(tidyverse)
+```
+
+# Abstract
+
+Here, I re-examine the analysis of Oeppen and Vaupel (2020).
+
+# Life Expectancy Analisys
+
+Here, I re-examine the analysis of Oeppen and Vaupel (2002)
+
+I use gapminder::gapminder_unfilter from tidyverse packages to find the maximun life expectancy for each year and country which had the maximum life expectancy
+
+Here is the code to use to organize the data
+
+```{r}
+gapminder::gapminder_unfiltered |>
+  group_by(year) |>
+  filter(lifeExp == max(lifeExp)) |>
+  ungroup() |> select(year, country, lifeExp) |>
+  arrange(year) -> sumdat
+```
+
+```{r}
+sumdat <- gapminder::gapminder_unfiltered |>
+  group_by(year) |>
+  filter(lifeExp == max(lifeExp)) |>
+  ungroup() |> select(year, country, lifeExp) |>
+  arrange(year)
+sumdat
+```
